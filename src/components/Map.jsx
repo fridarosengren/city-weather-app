@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import APIKey from '../config/keys';
+import React from 'react'
 
-const Map = ({ city }) => {
-    const [googleMaps, setGoogleMaps] = useState();
-
-    // Call google maps API
-    useEffect(() => {
-        const URL = `https://www.google.com/maps/embed/v1/place?key=${APIKey.googleMaps}&q=${city}`
-        city && setGoogleMaps(URL)
-    }, [city]) // Only run when city value changes
-
+const Map = ({ data }) => {
     return (
-        <iframe
-            title="test"
-            width="600"
-            height="450"
-            frameBorder="0"
-            src={googleMaps} allowFullScreen>
-        </iframe>
+        <div className="google-maps-container">
+            <iframe
+                title="test"
+                width="600"
+                height="450"
+                frameBorder="0"
+                src={data} allowFullScreen>
+            </iframe>
+        </div>
     )
 }
 
-export default Map;
+export default Map

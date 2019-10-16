@@ -1,23 +1,120 @@
 .App {
-  text-align: center;
-  background-color: #fbfbfb;
+  margin: 40px;
 }
 
-.App-logo {
-  height: 40vmin;
+/* General */
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Search form */
+input[type="text"] {
+  max-width: 500px;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 2px solid #2C4251;
+}
+
+input[type="submit"], button{
+  background-color: #2C4251;
+  border: 2px solid #2C4251;
+  padding: 10px;
+  color: #fff;
+}
+
+/* Recent search */
+@keyframes anim {
+  from { transform: translateY(-40px); } 
+  to { transform: translateY(0px); }
+}
+
+.recent-search {
+  width: 98%;
+  padding: 2%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  animation: anim 0.1s ease-in ;
+  z-index: 0;
+}
+.recent-search-list li {
+  border-bottom: 2px solid #2C4251;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+.recent-search-list li:hover {
+  border-bottom: 2px solid #ececec;
+}
+.recent-search-list {
+  list-style-type: none;
+  width: 98%;
+}
+
+/* Google maps */
+.google-maps-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.google-maps-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Header */
+.header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 96%;
+  background-color: #fff;
+  padding: 2%;
+  margin-bottom: 20px;
+}
+.recent-search-link, .search-form {
+  flex: 1;
 }
 
-.App-link {
-  color: #09d3ac;
+/* Flex */
+.flex-container {
+  display: flex;
+}
+
+.flex-item {
+  flex: 1;
+  padding: 15px;
+}
+
+.flex-item:nth-child(2) {
+  text-align: center;
+}
+
+/* Weather section */
+.temperature {
+  font-size: 3em;
+}
+
+.weather-description {
+  font-size: 1.2em;
+}
+
+img {
+  width: 70px;
+}
+
+main {
+  width: 96%;
+  background-color: #fff;
+  padding: 2%;
 }

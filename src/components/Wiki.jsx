@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Wiki = ({ city }) => {
-    const [summary, setSummary] = useState()
-
-    // Call wiki API
-    useEffect(() => {
-        const URL = `https://sv.wikipedia.org/api/rest_v1/page/summary/${city}`
-        city && fetch(URL).then(res => res.json()).then(
-            data => {
-                setSummary(data.extract)
-            },
-            error => {
-                console.log(error)
-            }
+const Wiki = ({ data }) => {
+    // Check if weather data exists
+    if (data.extract !== undefined) {
+        return (
+            <div className="flex-item">
+                <h2>Om {data.title}:</h2>
+                <p>{data.extract}</p>
+            </div>
         )
-    }, [city]) // Only run when city value changes
-
-    return <p>{summary}</p>
+    } else {
+        return <div className="flex-item"><p>{data.message}</p></div>
+    }
 }
 
 export default Wiki;

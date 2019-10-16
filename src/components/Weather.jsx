@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import APIKey from '../config/keys';
+import React from 'react';
 
-const Weather = ({ city }) => {
-    const [weather, setWeather] = useState();
-
-    // Call weather API
-    useEffect(() => {
-        const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIKey.weather}`;
-        city && fetch(URL).then(res => res.json()).then(
-            data => {
-                setWeather(data.main.temp);
-            },
-            error => {
-                console.log(error)
-            }
+const Weather = ({ data }) => {
+    // Check if weather data exists
+    if (data.main !== undefined) {
+        return (
+            <div className="flex-item">
+                <h2>Väder just nu: </h2>
+                <span className="temperature"> {Math.round(data.main.temp)}&#176; </span>
+                <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt={data.weather[0].description} /><br />
+                <span className="weather-description"> {data.weather[0].description} </span>
+            </div>
         )
-    }, [city]) // Only run when city value changes
-
-    return <p>{weather}</p>
+    } else {
+        return <div className="flex-item"><p>{data.message}</p></div>
+    }
 }
 
 export default Weather;
